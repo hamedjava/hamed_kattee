@@ -534,6 +534,24 @@ Map<String, dynamic> _$UserDtoToJson(UserDto instance) => <String, dynamic>{
       'id': instance.id,
     };
 
+UserDtoApiResult _$UserDtoApiResultFromJson(Map<String, dynamic> json) =>
+    UserDtoApiResult(
+      data: json['data'] == null
+          ? null
+          : UserDto.fromJson(json['data'] as Map<String, dynamic>),
+      isSuccess: json['isSuccess'] as bool?,
+      statusCode: apiResultStatusCodeFromJson(json['statusCode']),
+      message: json['message'] as String?,
+    );
+
+Map<String, dynamic> _$UserDtoApiResultToJson(UserDtoApiResult instance) =>
+    <String, dynamic>{
+      'data': instance.data?.toJson(),
+      'isSuccess': instance.isSuccess,
+      'statusCode': apiResultStatusCodeToJson(instance.statusCode),
+      'message': instance.message,
+    };
+
 ApiV1AuthenticationFreeTokenPost$RequestBody
     _$ApiV1AuthenticationFreeTokenPost$RequestBodyFromJson(
             Map<String, dynamic> json) =>

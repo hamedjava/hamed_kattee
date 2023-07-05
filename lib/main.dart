@@ -1,6 +1,6 @@
-import 'package:delivery/initscreen.dart';
 import 'package:delivery/model/db/shop_card_entity.dart';
 import 'package:delivery/routs/routs.dart';
+import 'package:delivery/view/pages/auth/loginscreen.dart';
 import 'package:delivery/view/provider/index_card.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const InitScreen(),
+      home: LoginScreen(),
       routes: routes,
     );
   }

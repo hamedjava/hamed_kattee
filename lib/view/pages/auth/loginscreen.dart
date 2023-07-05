@@ -1,15 +1,17 @@
 import 'package:delivery/model/globals/globals.dart';
 import 'package:delivery/view/components/forms/my_divider.dart';
-import 'package:delivery/view/pages/home/indexscreen.dart';
+import 'package:delivery/view/pages/auth/registerotpscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:delivery/controller/authentication/auth_controller.dart'
+    as auth_controller;
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
-  void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +64,7 @@ class LoginScreen extends StatelessWidget {
                     child: TextFormField(
                         textAlign: TextAlign.center,
                         cursorColor: Colors.grey,
+                        controller: userNameController,
                         decoration: InputDecoration(
                             hintText: '- - - - - - - - - - -',
                             labelText: 'شماره تلفن',
@@ -102,9 +105,21 @@ class LoginScreen extends StatelessWidget {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(50),
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const IndexScreen(),
-                          ));
+                          auth_controller
+                              .login(
+                                  context: context,
+                                  userName: userNameController.text)
+                              .then((value) {
+                            if (value.isSuccess!) {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => RegisterOtpScreen(),
+                                ),
+                              );
+                            } else {
+                              print("error");
+                            }
+                          });
                         },
                         child: Container(
                           width: 80,

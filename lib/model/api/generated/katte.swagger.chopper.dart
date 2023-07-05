@@ -149,7 +149,7 @@ class _$Katte extends Katte {
   }
 
   @override
-  Future<Response<dynamic>> _apiV1AuthenticationSignUpPost(
+  Future<Response<ApiResult>> _apiV1AuthenticationSignUpPost(
       {required SignUpDto? body}) {
     final Uri $url =
         Uri.parse('http://103.75.197.248:90/api/v1/Authentication/SignUp');
@@ -160,11 +160,12 @@ class _$Katte extends Katte {
       client.baseUrl,
       body: $body,
     );
-    return client.send<dynamic, dynamic>($request);
+    return client.send<ApiResult, ApiResult>($request);
   }
 
   @override
-  Future<Response<dynamic>> _apiV1AuthenticationLoginPost({String? userName}) {
+  Future<Response<ApiResult>> _apiV1AuthenticationLoginPost(
+      {String? userName}) {
     final Uri $url =
         Uri.parse('http://103.75.197.248:90/api/v1/Authentication/Login');
     final Map<String, dynamic> $params = <String, dynamic>{
@@ -176,11 +177,11 @@ class _$Katte extends Katte {
       client.baseUrl,
       parameters: $params,
     );
-    return client.send<dynamic, dynamic>($request);
+    return client.send<ApiResult, ApiResult>($request);
   }
 
   @override
-  Future<Response<dynamic>> _apiV1AuthenticationLoginOtpPost(
+  Future<Response<ApiResult>> _apiV1AuthenticationLoginOtpPost(
       {required LoginOtpDto? body}) {
     final Uri $url =
         Uri.parse('http://103.75.197.248:90/api/v1/Authentication/LoginOtp');
@@ -191,11 +192,11 @@ class _$Katte extends Katte {
       client.baseUrl,
       body: $body,
     );
-    return client.send<dynamic, dynamic>($request);
+    return client.send<ApiResult, ApiResult>($request);
   }
 
   @override
-  Future<Response<UserDto>> _apiV1AuthenticationProfileGet() {
+  Future<Response<UserDtoApiResult>> _apiV1AuthenticationProfileGet() {
     final Uri $url =
         Uri.parse('http://103.75.197.248:90/api/v1/Authentication/Profile');
     final Request $request = Request(
@@ -203,11 +204,11 @@ class _$Katte extends Katte {
       $url,
       client.baseUrl,
     );
-    return client.send<UserDto, UserDto>($request);
+    return client.send<UserDtoApiResult, UserDtoApiResult>($request);
   }
 
   @override
-  Future<Response<dynamic>> _apiV1AuthenticationEditProfileImagePost(
+  Future<Response<ApiResult>> _apiV1AuthenticationEditProfileImagePost(
       {String? File}) {
     final Uri $url = Uri.parse(
         'http://103.75.197.248:90/api/v1/Authentication/EditProfileImage');
@@ -224,7 +225,7 @@ class _$Katte extends Katte {
       parts: $parts,
       multipart: true,
     );
-    return client.send<dynamic, dynamic>($request);
+    return client.send<ApiResult, ApiResult>($request);
   }
 
   @override

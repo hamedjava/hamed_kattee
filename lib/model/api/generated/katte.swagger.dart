@@ -179,8 +179,10 @@ abstract class Katte extends ChopperService {
   });
 
   ///
-  Future<chopper.Response> apiV1AuthenticationSignUpPost(
+  Future<chopper.Response<ApiResult>> apiV1AuthenticationSignUpPost(
       {required SignUpDto? body}) {
+    generatedMapping.putIfAbsent(ApiResult, () => ApiResult.fromJsonFactory);
+
     return _apiV1AuthenticationSignUpPost(body: body);
   }
 
@@ -189,12 +191,15 @@ abstract class Katte extends ChopperService {
     path: 'http://103.75.197.248:90/api/v1/Authentication/SignUp',
     optionalBody: true,
   )
-  Future<chopper.Response> _apiV1AuthenticationSignUpPost(
+  Future<chopper.Response<ApiResult>> _apiV1AuthenticationSignUpPost(
       {@Body() required SignUpDto? body});
 
   ///
   ///@param UserName
-  Future<chopper.Response> apiV1AuthenticationLoginPost({String? userName}) {
+  Future<chopper.Response<ApiResult>> apiV1AuthenticationLoginPost(
+      {String? userName}) {
+    generatedMapping.putIfAbsent(ApiResult, () => ApiResult.fromJsonFactory);
+
     return _apiV1AuthenticationLoginPost(userName: userName);
   }
 
@@ -204,12 +209,14 @@ abstract class Katte extends ChopperService {
     path: 'http://103.75.197.248:90/api/v1/Authentication/Login',
     optionalBody: true,
   )
-  Future<chopper.Response> _apiV1AuthenticationLoginPost(
+  Future<chopper.Response<ApiResult>> _apiV1AuthenticationLoginPost(
       {@Query('UserName') String? userName});
 
   ///
-  Future<chopper.Response> apiV1AuthenticationLoginOtpPost(
+  Future<chopper.Response<ApiResult>> apiV1AuthenticationLoginOtpPost(
       {required LoginOtpDto? body}) {
+    generatedMapping.putIfAbsent(ApiResult, () => ApiResult.fromJsonFactory);
+
     return _apiV1AuthenticationLoginOtpPost(body: body);
   }
 
@@ -218,23 +225,26 @@ abstract class Katte extends ChopperService {
     path: 'http://103.75.197.248:90/api/v1/Authentication/LoginOtp',
     optionalBody: true,
   )
-  Future<chopper.Response> _apiV1AuthenticationLoginOtpPost(
+  Future<chopper.Response<ApiResult>> _apiV1AuthenticationLoginOtpPost(
       {@Body() required LoginOtpDto? body});
 
   ///
-  Future<chopper.Response<UserDto>> apiV1AuthenticationProfileGet() {
-    generatedMapping.putIfAbsent(UserDto, () => UserDto.fromJsonFactory);
+  Future<chopper.Response<UserDtoApiResult>> apiV1AuthenticationProfileGet() {
+    generatedMapping.putIfAbsent(
+        UserDtoApiResult, () => UserDtoApiResult.fromJsonFactory);
 
     return _apiV1AuthenticationProfileGet();
   }
 
   ///
   @Get(path: 'http://103.75.197.248:90/api/v1/Authentication/Profile')
-  Future<chopper.Response<UserDto>> _apiV1AuthenticationProfileGet();
+  Future<chopper.Response<UserDtoApiResult>> _apiV1AuthenticationProfileGet();
 
   ///
-  Future<chopper.Response> apiV1AuthenticationEditProfileImagePost(
+  Future<chopper.Response<ApiResult>> apiV1AuthenticationEditProfileImagePost(
       {String? File}) {
+    generatedMapping.putIfAbsent(ApiResult, () => ApiResult.fromJsonFactory);
+
     return _apiV1AuthenticationEditProfileImagePost(File: File);
   }
 
@@ -244,7 +254,7 @@ abstract class Katte extends ChopperService {
     optionalBody: true,
   )
   @Multipart()
-  Future<chopper.Response> _apiV1AuthenticationEditProfileImagePost(
+  Future<chopper.Response<ApiResult>> _apiV1AuthenticationEditProfileImagePost(
       {@PartFile() String? File});
 
   ///
@@ -433,9 +443,7 @@ abstract class Katte extends ChopperService {
   ///@param UserId
   ///@param Authority
   ///@param status
-  @Get(
-      path:
-          'http://103.75.197.248:90/api/v1/Payment/ProductPaymentConfirmation')
+  @Get(path: 'http://103.75.197.248:90/api/v1/Payment/ProductPaymentConfirmation')
   Future<chopper.Response<ApiResult>>
       _apiV1PaymentProductPaymentConfirmationGet({
     @Query('ShopCardId') String? shopCardId,
@@ -3134,6 +3142,89 @@ extension $UserDtoExtension on UserDto {
         phone: (phone != null ? phone.value : this.phone),
         postalCode: (postalCode != null ? postalCode.value : this.postalCode),
         id: (id != null ? id.value : this.id));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
+class UserDtoApiResult {
+  UserDtoApiResult({
+    this.data,
+    this.isSuccess,
+    this.statusCode,
+    this.message,
+  });
+
+  factory UserDtoApiResult.fromJson(Map<String, dynamic> json) =>
+      _$UserDtoApiResultFromJson(json);
+
+  static const toJsonFactory = _$UserDtoApiResultToJson;
+  Map<String, dynamic> toJson() => _$UserDtoApiResultToJson(this);
+
+  @JsonKey(name: 'data')
+  final UserDto? data;
+  @JsonKey(name: 'isSuccess')
+  final bool? isSuccess;
+  @JsonKey(
+    name: 'statusCode',
+    toJson: apiResultStatusCodeToJson,
+    fromJson: apiResultStatusCodeFromJson,
+  )
+  final enums.ApiResultStatusCode? statusCode;
+  @JsonKey(name: 'message')
+  final String? message;
+  static const fromJsonFactory = _$UserDtoApiResultFromJson;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is UserDtoApiResult &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)) &&
+            (identical(other.isSuccess, isSuccess) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSuccess, isSuccess)) &&
+            (identical(other.statusCode, statusCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.statusCode, statusCode)) &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(data) ^
+      const DeepCollectionEquality().hash(isSuccess) ^
+      const DeepCollectionEquality().hash(statusCode) ^
+      const DeepCollectionEquality().hash(message) ^
+      runtimeType.hashCode;
+}
+
+extension $UserDtoApiResultExtension on UserDtoApiResult {
+  UserDtoApiResult copyWith(
+      {UserDto? data,
+      bool? isSuccess,
+      enums.ApiResultStatusCode? statusCode,
+      String? message}) {
+    return UserDtoApiResult(
+        data: data ?? this.data,
+        isSuccess: isSuccess ?? this.isSuccess,
+        statusCode: statusCode ?? this.statusCode,
+        message: message ?? this.message);
+  }
+
+  UserDtoApiResult copyWithWrapped(
+      {Wrapped<UserDto?>? data,
+      Wrapped<bool?>? isSuccess,
+      Wrapped<enums.ApiResultStatusCode?>? statusCode,
+      Wrapped<String?>? message}) {
+    return UserDtoApiResult(
+        data: (data != null ? data.value : this.data),
+        isSuccess: (isSuccess != null ? isSuccess.value : this.isSuccess),
+        statusCode: (statusCode != null ? statusCode.value : this.statusCode),
+        message: (message != null ? message.value : this.message));
   }
 }
 

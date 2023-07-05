@@ -1,2416 +1,2503 @@
 {
-    "openapi": "3.0.1",
-    "info": {
-      "title": "API V1",
-      "version": "v1"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/Address": {
+      "post": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Creates a Address",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Returns all Addresses",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressDtoListApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressDtoListApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressDtoListApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Updates a Address by unique id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "A Address representation",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddressDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
     },
-    "paths": {
-      "/api/v1/Address": {
-        "post": {
-          "tags": [
-            "Address"
-          ],
-          "summary": "Creates a Address",
-          "requestBody": {
+    "/api/v1/Address/Get_Address_Of_User": {
+      "post": {
+        "tags": [
+          "Address"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
             "content": {
-              "application/json-patch+json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AddressDto"
+                  "$ref": "#/components/schemas/AddressDtoListApiResult"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AddressDto"
+                  "$ref": "#/components/schemas/AddressDtoListApiResult"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AddressDto"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressDto"
+                  "$ref": "#/components/schemas/AddressDtoListApiResult"
                 }
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
+          "401": {
+            "description": "Unauthorized"
           },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
+          "403": {
+            "description": "Forbidden"
+          }
         },
-        "get": {
-          "tags": [
-            "Address"
-          ],
-          "summary": "Returns all Addresses",
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AddressDtoListApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AddressDtoListApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AddressDtoListApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/Address/{id}": {
+      "get": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Retrieves a Address by unique id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "a unique id for the Address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
             }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        },
-        "put": {
-          "tags": [
-            "Address"
-          ],
-          "summary": "Updates a Address by unique id",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "query",
-              "description": "A Address representation",
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "requestBody": {
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
             "content": {
-              "application/json-patch+json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/AddressDto"
+                  "$ref": "#/components/schemas/AddressDtoApiResult"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AddressDto"
+                  "$ref": "#/components/schemas/AddressDtoApiResult"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AddressDto"
+                  "$ref": "#/components/schemas/AddressDtoApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Deletes a Address by unique id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique id for the Address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
                 }
               },
-              "application/*+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AddressDto"
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
                 }
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
+          "401": {
+            "description": "Unauthorized"
           },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Address/Get_Address_Of_User": {
-        "post": {
-          "tags": [
-            "Address"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AddressDtoListApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AddressDtoListApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AddressDtoListApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Address/{id}": {
-        "get": {
-          "tags": [
-            "Address"
-          ],
-          "summary": "Retrieves a Address by unique id",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "a unique id for the Address",
-              "required": true,
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AddressDtoApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AddressDtoApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AddressDtoApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
+          "403": {
+            "description": "Forbidden"
+          }
         },
-        "delete": {
-          "tags": [
-            "Address"
-          ],
-          "summary": "Deletes a Address by unique id",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "A unique id for the Address",
-              "required": true,
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/Authentication/FreeToken": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
               "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Authentication/FreeToken": {
-        "post": {
-          "tags": [
-            "Authentication"
-          ],
-          "requestBody": {
-            "content": {
-              "multipart/form-data": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "grant_type": {
-                      "type": "string"
-                    },
-                    "username": {
-                      "type": "string"
-                    },
-                    "password": {
-                      "type": "string"
-                    },
-                    "refresh_token": {
-                      "type": "string"
-                    },
-                    "scope": {
-                      "type": "string"
-                    },
-                    "client_id": {
-                      "type": "string"
-                    },
-                    "client_secret": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "encoding": {
+                "type": "object",
+                "properties": {
                   "grant_type": {
-                    "style": "form"
+                    "type": "string"
                   },
                   "username": {
-                    "style": "form"
+                    "type": "string"
                   },
                   "password": {
-                    "style": "form"
+                    "type": "string"
                   },
                   "refresh_token": {
-                    "style": "form"
+                    "type": "string"
                   },
                   "scope": {
-                    "style": "form"
+                    "type": "string"
                   },
                   "client_id": {
-                    "style": "form"
+                    "type": "string"
                   },
                   "client_secret": {
-                    "style": "form"
+                    "type": "string"
                   }
                 }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AccessToken"
-                  }
+              },
+              "encoding": {
+                "grant_type": {
+                  "style": "form"
                 },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AccessToken"
-                  }
+                "username": {
+                  "style": "form"
                 },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/AccessToken"
-                  }
+                "password": {
+                  "style": "form"
+                },
+                "refresh_token": {
+                  "style": "form"
+                },
+                "scope": {
+                  "style": "form"
+                },
+                "client_id": {
+                  "style": "form"
+                },
+                "client_secret": {
+                  "style": "form"
                 }
               }
             }
           }
-        }
-      },
-      "/api/v1/Authentication/SignUp": {
-        "post": {
-          "tags": [
-            "Authentication"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json-patch+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SignUpDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SignUpDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SignUpDto"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SignUpDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/api/v1/Authentication/Login": {
-        "post": {
-          "tags": [
-            "Authentication"
-          ],
-          "parameters": [
-            {
-              "name": "UserName",
-              "in": "query",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/api/v1/Authentication/LoginOtp": {
-        "post": {
-          "tags": [
-            "Authentication"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json-patch+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginOtpDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginOtpDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginOtpDto"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginOtpDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/api/v1/Authentication/Profile": {
-        "get": {
-          "tags": [
-            "Authentication"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/UserDto"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/UserDto"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/UserDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/api/v1/Authentication/EditProfileImage": {
-        "post": {
-          "tags": [
-            "Authentication"
-          ],
-          "requestBody": {
-            "content": {
-              "multipart/form-data": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "File": {
-                      "type": "string",
-                      "format": "binary"
-                    }
-                  }
-                },
-                "encoding": {
-                  "File": {
-                    "style": "form"
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/api/v1/Category/ListCategory": {
-        "get": {
-          "tags": [
-            "Category"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CategoryDtoListApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CategoryDtoListApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CategoryDtoListApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Comment": {
-        "post": {
-          "tags": [
-            "Comment"
-          ],
-          "summary": "Creates a Comment",
-          "requestBody": {
-            "content": {
-              "application/json-patch+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommentDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommentDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommentDto"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommentDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
         },
-        "get": {
-          "tags": [
-            "Comment"
-          ],
-          "summary": "Returns all Comments",
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CommentDtoListApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CommentDtoListApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CommentDtoListApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        },
-        "put": {
-          "tags": [
-            "Comment"
-          ],
-          "summary": "Updates a Comment by unique id",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "query",
-              "description": "A Comment representation",
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "requestBody": {
+        "responses": {
+          "200": {
+            "description": "Success",
             "content": {
-              "application/json-patch+json": {
+              "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentDto"
+                  "$ref": "#/components/schemas/AccessToken"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentDto"
+                  "$ref": "#/components/schemas/AccessToken"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentDto"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CommentDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Comment/ProductCommentsList": {
-        "get": {
-          "tags": [
-            "Comment"
-          ],
-          "parameters": [
-            {
-              "name": "ProductId",
-              "in": "query",
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CommentDtoListApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CommentDtoListApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CommentDtoListApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Comment/{id}": {
-        "get": {
-          "tags": [
-            "Comment"
-          ],
-          "summary": "Retrieves a Comment by unique id",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "a unique id for the Comment",
-              "required": true,
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CommentDtoApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CommentDtoApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/CommentDtoApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        },
-        "delete": {
-          "tags": [
-            "Comment"
-          ],
-          "summary": "Deletes a Comment by unique id",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "A unique id for the Comment",
-              "required": true,
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Notification/Notification_List": {
-        "get": {
-          "tags": [
-            "Notification"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/NotificationDto"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/NotificationDto"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/NotificationDto"
-                  }
+                  "$ref": "#/components/schemas/AccessToken"
                 }
               }
             }
           }
-        }
-      },
-      "/api/v1/Payment/CashOrders": {
-        "get": {
-          "tags": [
-            "Payment"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Payment/ProductPay": {
-        "get": {
-          "tags": [
-            "Payment"
-          ],
-          "parameters": [
-            {
-              "name": "ShopCardId",
-              "in": "query",
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            {
-              "name": "AddressId",
-              "in": "query",
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/StringApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/StringApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/StringApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Payment/ProductPaymentConfirmation": {
-        "get": {
-          "tags": [
-            "Payment"
-          ],
-          "parameters": [
-            {
-              "name": "ShopCardId",
-              "in": "query",
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            {
-              "name": "UserId",
-              "in": "query",
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            {
-              "name": "Authority",
-              "in": "query",
-              "schema": {
-                "type": "string"
-              }
-            },
-            {
-              "name": "status",
-              "in": "query",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/Product/SearchProduct": {
-        "get": {
-          "tags": [
-            "Product"
-          ],
-          "parameters": [
-            {
-              "name": "Searched",
-              "in": "query",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoApiResult"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/api/v1/Product/SingleProduct": {
-        "get": {
-          "tags": [
-            "Product"
-          ],
-          "parameters": [
-            {
-              "name": "ProductId",
-              "in": "query",
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoApiResult"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/api/v1/Product/AllProductList": {
-        "get": {
-          "tags": [
-            "Product"
-          ],
-          "summary": "All ProductList",
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoListApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoListApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoListApiResult"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/api/v1/Product/TopestProductList": {
-        "get": {
-          "tags": [
-            "Product"
-          ],
-          "summary": "Products that has top Rank",
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoListApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoListApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoListApiResult"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/api/v1/Product/DiscountProductList": {
-        "get": {
-          "tags": [
-            "Product"
-          ],
-          "summary": "Products that has most discount",
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoListApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoListApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDtoListApiResult"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/api/v1/ShopCard/SyncShopCard": {
-        "post": {
-          "tags": [
-            "ShopCard"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json-patch+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SyncOrderDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SyncOrderDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SyncOrderDto"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SyncOrderDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/ShopCard/ShopCardDetail_1": {
-        "get": {
-          "tags": [
-            "ShopCard"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShopCardDtoApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShopCardDtoApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShopCardDtoApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/ShopCard/ShopCardDetail_2": {
-        "get": {
-          "tags": [
-            "ShopCard"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShopCardDtoApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShopCardDtoApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShopCardDtoApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        },
-        "post": {
-          "tags": [
-            "ShopCard"
-          ],
-          "requestBody": {
-            "content": {
-              "application/json-patch+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Card2Dto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Card2Dto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Card2Dto"
-                }
-              },
-              "application/*+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Card2Dto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/ShopCard/ShopCardDetail_3": {
-        "get": {
-          "tags": [
-            "ShopCard"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShopCardDtoApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShopCardDtoApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ShopCardDtoApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/ShopCard/Delete_ShopCardDetail": {
-        "get": {
-          "tags": [
-            "ShopCard"
-          ],
-          "parameters": [
-            {
-              "name": "ShopCardDetailId",
-              "in": "query",
-              "schema": {
-                "type": "string",
-                "format": "uuid"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
-        }
-      },
-      "/api/v1/ShopCard/Delete_All_ShopCard": {
-        "get": {
-          "tags": [
-            "ShopCard"
-          ],
-          "responses": {
-            "200": {
-              "description": "Success",
-              "content": {
-                "text/plain": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                },
-                "text/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ApiResult"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Unauthorized"
-            },
-            "403": {
-              "description": "Forbidden"
-            }
-          },
-          "security": [
-            {
-              "OAuth2": [ ]
-            }
-          ]
         }
       }
     },
-    "components": {
-      "schemas": {
-        "AccessToken": {
-          "type": "object",
-          "properties": {
-            "access_token": {
-              "type": "string",
-              "nullable": true
+    "/api/v1/Authentication/SignUp": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpDto"
+              }
             },
-            "refresh_token": {
-              "type": "string",
-              "nullable": true
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpDto"
+              }
             },
-            "token_type": {
-              "type": "string",
-              "nullable": true
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpDto"
+              }
             },
-            "expires_in": {
-              "type": "integer",
-              "format": "int32"
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Authentication/Login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Authentication/LoginOtp": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginOtpDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginOtpDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginOtpDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginOtpDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Authentication/Profile": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDtoApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDtoApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDtoApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Authentication/EditProfileImage": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Category/ListCategory": {
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryDtoListApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryDtoListApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryDtoListApiResult"
+                }
+              }
             }
           },
-          "additionalProperties": false
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
         },
-        "AddressDto": {
-          "type": "object",
-          "properties": {
-            "clientId": {
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/Comment": {
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Creates a Comment",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Returns all Comments",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDtoListApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDtoListApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDtoListApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Updates a Comment by unique id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "A Comment representation",
+            "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDto"
+              }
             },
-            "clientPhoneNumber": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/Comment/ProductCommentsList": {
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "parameters": [
+          {
+            "name": "ProductId",
+            "in": "query",
+            "schema": {
               "type": "string",
-              "nullable": true
-            },
-            "clientFname": {
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDtoListApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDtoListApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDtoListApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/Comment/{id}": {
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Retrieves a Comment by unique id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "a unique id for the Comment",
+            "required": true,
+            "schema": {
               "type": "string",
-              "nullable": true
-            },
-            "clientLname": {
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDtoApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDtoApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentDtoApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Deletes a Comment by unique id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A unique id for the Comment",
+            "required": true,
+            "schema": {
               "type": "string",
-              "nullable": true
-            },
-            "topic": {
-              "type": "string",
-              "nullable": true
-            },
-            "postalCode": {
-              "type": "string",
-              "nullable": true
-            },
-            "location": {
-              "type": "string",
-              "nullable": true
-            },
-            "id": {
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/Notification/Notification_List": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Payment/CashOrders": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/Payment/ProductPay": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "ShopCardId",
+            "in": "query",
+            "schema": {
               "type": "string",
               "format": "uuid"
             }
           },
-          "additionalProperties": false
+          {
+            "name": "AddressId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
         },
-        "AddressDtoApiResult": {
-          "type": "object",
-          "properties": {
-            "data": {
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/Payment/ProductPaymentConfirmation": {
+      "get": {
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "ShopCardId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Authority",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/Product/SearchProduct": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "Searched",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Product/SingleProduct": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "ProductId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Product/AllProductList": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "All ProductList",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoListApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoListApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoListApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Product/TopestProductList": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Products that has top Rank",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoListApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoListApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoListApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Product/DiscountProductList": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Products that has most discount",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoListApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoListApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDtoListApiResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ShopCard/SyncShopCard": {
+      "post": {
+        "tags": [
+          "ShopCard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncOrderDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncOrderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncOrderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncOrderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/ShopCard/ShopCardDetail_1": {
+      "get": {
+        "tags": [
+          "ShopCard"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShopCardDtoApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShopCardDtoApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShopCardDtoApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/ShopCard/ShopCardDetail_2": {
+      "get": {
+        "tags": [
+          "ShopCard"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShopCardDtoApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShopCardDtoApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShopCardDtoApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ShopCard"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Card2Dto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Card2Dto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Card2Dto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Card2Dto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/ShopCard/ShopCardDetail_3": {
+      "get": {
+        "tags": [
+          "ShopCard"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShopCardDtoApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShopCardDtoApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShopCardDtoApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/ShopCard/Delete_ShopCardDetail": {
+      "get": {
+        "tags": [
+          "ShopCard"
+        ],
+        "parameters": [
+          {
+            "name": "ShopCardDetailId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v1/ShopCard/Delete_All_ShopCard": {
+      "get": {
+        "tags": [
+          "ShopCard"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [ ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccessToken": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "nullable": true
+          },
+          "refresh_token": {
+            "type": "string",
+            "nullable": true
+          },
+          "token_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressDto": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "clientPhoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "clientFname": {
+            "type": "string",
+            "nullable": true
+          },
+          "clientLname": {
+            "type": "string",
+            "nullable": true
+          },
+          "topic": {
+            "type": "string",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressDtoApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AddressDto"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddressDtoListApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
               "$ref": "#/components/schemas/AddressDto"
             },
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
+            "nullable": true
           },
-          "additionalProperties": false
-        },
-        "AddressDtoListApiResult": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AddressDto"
-              },
-              "nullable": true
-            },
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
+          "isSuccess": {
+            "type": "boolean"
           },
-          "additionalProperties": false
-        },
-        "ApiResult": {
-          "type": "object",
-          "properties": {
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
           },
-          "additionalProperties": false
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
         },
-        "ApiResultStatusCode": {
-          "enum": [
-            "Success",
-            "ServerError",
-            "BadRequest",
-            "NotFound",
-            "ListEmpty",
-            "LogicError",
-            "UnAuthorized"
-          ],
-          "type": "string"
-        },
-        "Card2Dto": {
-          "type": "object",
-          "properties": {
-            "addressId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "payOnline": {
-              "type": "boolean"
-            }
+        "additionalProperties": false
+      },
+      "ApiResult": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
           },
-          "additionalProperties": false
-        },
-        "CategoryDto": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "nullable": true
-            },
-            "imageLink": {
-              "type": "string",
-              "nullable": true
-            },
-            "code": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "id": {
-              "type": "string",
-              "format": "uuid"
-            }
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
           },
-          "additionalProperties": false
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
         },
-        "CategoryDtoListApiResult": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/CategoryDto"
-              },
-              "nullable": true
-            },
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
+        "additionalProperties": false
+      },
+      "ApiResultStatusCode": {
+        "enum": [
+          "Success",
+          "ServerError",
+          "BadRequest",
+          "NotFound",
+          "ListEmpty",
+          "LogicError",
+          "UnAuthorized"
+        ],
+        "type": "string"
+      },
+      "Card2Dto": {
+        "type": "object",
+        "properties": {
+          "addressId": {
+            "type": "string",
+            "format": "uuid"
           },
-          "additionalProperties": false
+          "payOnline": {
+            "type": "boolean"
+          }
         },
-        "CommentDto": {
-          "type": "object",
-          "properties": {
-            "text": {
-              "type": "string",
-              "nullable": true
-            },
-            "rate": {
-              "type": "number",
-              "format": "double"
-            },
-            "userId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "userFname": {
-              "type": "string",
-              "nullable": true
-            },
-            "userLname": {
-              "type": "string",
-              "nullable": true
-            },
-            "productsId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "commentStatus": {
-              "$ref": "#/components/schemas/CommentStatus"
-            },
-            "id": {
-              "type": "string",
-              "format": "uuid"
-            }
+        "additionalProperties": false
+      },
+      "CategoryDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
           },
-          "additionalProperties": false
+          "imageLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
         },
-        "CommentDtoApiResult": {
-          "type": "object",
-          "properties": {
-            "data": {
+        "additionalProperties": false
+      },
+      "CategoryDtoListApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CategoryDto"
+            },
+            "nullable": true
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CommentDto": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "rate": {
+            "type": "number",
+            "format": "double"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userFname": {
+            "type": "string",
+            "nullable": true
+          },
+          "userLname": {
+            "type": "string",
+            "nullable": true
+          },
+          "productsId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "commentStatus": {
+            "$ref": "#/components/schemas/CommentStatus"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CommentDtoApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CommentDto"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CommentDtoListApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
               "$ref": "#/components/schemas/CommentDto"
             },
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
+            "nullable": true
           },
-          "additionalProperties": false
-        },
-        "CommentDtoListApiResult": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/CommentDto"
-              },
-              "nullable": true
-            },
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
+          "isSuccess": {
+            "type": "boolean"
           },
-          "additionalProperties": false
-        },
-        "CommentStatus": {
-          "enum": [
-            "NotSeen",
-            "Accepted",
-            "InAccepted"
-          ],
-          "type": "string"
-        },
-        "GenderType": {
-          "enum": [
-            "Male",
-            "Female"
-          ],
-          "type": "string"
-        },
-        "List_Chosed_Product_Dto": {
-          "type": "object",
-          "properties": {
-            "productId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "count": {
-              "type": "integer",
-              "format": "int32"
-            }
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
           },
-          "additionalProperties": false
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
         },
-        "LoginOtpDto": {
-          "type": "object",
-          "properties": {
-            "phoneNumber": {
-              "type": "string",
-              "nullable": true
-            },
-            "code": {
-              "type": "integer",
-              "format": "int32"
-            }
+        "additionalProperties": false
+      },
+      "CommentStatus": {
+        "enum": [
+          "NotSeen",
+          "Accepted",
+          "InAccepted"
+        ],
+        "type": "string"
+      },
+      "GenderType": {
+        "enum": [
+          "Male",
+          "Female"
+        ],
+        "type": "string"
+      },
+      "List_Chosed_Product_Dto": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "format": "uuid"
           },
-          "additionalProperties": false
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          }
         },
-        "NotificationDto": {
-          "type": "object",
-          "properties": {
-            "topic": {
-              "type": "string",
-              "nullable": true
-            },
-            "text": {
-              "type": "string",
-              "nullable": true
-            },
-            "dateTimes": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "userId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "userPhoneNumber": {
-              "type": "string",
-              "nullable": true
-            },
-            "userFName": {
-              "type": "string",
-              "nullable": true
-            },
-            "userLName": {
-              "type": "string",
-              "nullable": true
-            },
-            "id": {
-              "type": "string",
-              "format": "uuid"
-            }
+        "additionalProperties": false
+      },
+      "LoginOtpDto": {
+        "type": "object",
+        "properties": {
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
           },
-          "additionalProperties": false
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          }
         },
-        "ProductDto": {
-          "type": "object",
-          "properties": {
-            "code": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "name": {
-              "type": "string",
-              "nullable": true
-            },
-            "price": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "imageLink": {
-              "type": "string",
-              "nullable": true
-            },
-            "discount": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "percent": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "count": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "rate": {
-              "type": "number",
-              "format": "double"
-            },
-            "totalRate": {
-              "type": "number",
-              "format": "double"
-            },
-            "shortDetail": {
-              "type": "string",
-              "nullable": true
-            },
-            "longDetail": {
-              "type": "string",
-              "nullable": true
-            },
-            "creationDateTime": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "categorysId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "categories": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/CategoryDto"
-              },
-              "nullable": true
-            },
-            "comments": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/CommentDto"
-              },
-              "nullable": true
-            },
-            "id": {
-              "type": "string",
-              "format": "uuid"
-            }
+        "additionalProperties": false
+      },
+      "NotificationDto": {
+        "type": "object",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "nullable": true
           },
-          "additionalProperties": false
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateTimes": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userPhoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "userFName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userLName": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
         },
-        "ProductDtoApiResult": {
-          "type": "object",
-          "properties": {
-            "data": {
+        "additionalProperties": false
+      },
+      "ProductDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "imageLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "discount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "percent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rate": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "shortDetail": {
+            "type": "string",
+            "nullable": true
+          },
+          "longDetail": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "categorysId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CategoryDto"
+            },
+            "nullable": true
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommentDto"
+            },
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductDtoApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProductDto"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductDtoListApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
               "$ref": "#/components/schemas/ProductDto"
             },
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
+            "nullable": true
           },
-          "additionalProperties": false
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
         },
-        "ProductDtoListApiResult": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/ProductDto"
-              },
-              "nullable": true
-            },
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "ShopCardDetailDto": {
-          "type": "object",
-          "properties": {
-            "price": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "count": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "disCount": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "productsId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "productsPrice": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "productsDiscount": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "productsName": {
-              "type": "string",
-              "nullable": true
-            },
-            "productsImageLink": {
-              "type": "string",
-              "nullable": true
-            },
-            "creationDateTime": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "id": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          "additionalProperties": false
-        },
-        "ShopCardDto": {
-          "type": "object",
-          "properties": {
-            "userId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "addressId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "orderReportId": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "orderReportTax": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "orderReportPostCost": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "userUserName": {
-              "type": "string",
-              "nullable": true
-            },
-            "userFName": {
-              "type": "string",
-              "nullable": true
-            },
-            "userLName": {
-              "type": "string",
-              "nullable": true
-            },
-            "totalPrice": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "postPrice": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "finalTotalPrice": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "payOnline": {
-              "type": "boolean"
-            },
-            "shopCardDetails": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/ShopCardDetailDto"
-              },
-              "nullable": true
-            },
-            "addresses": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AddressDto"
-              },
-              "nullable": true
-            },
-            "id": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          "additionalProperties": false
-        },
-        "ShopCardDtoApiResult": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "$ref": "#/components/schemas/ShopCardDto"
-            },
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "SignUpDto": {
-          "type": "object",
-          "properties": {
-            "fName": {
-              "type": "string",
-              "nullable": true
-            },
-            "lName": {
-              "type": "string",
-              "nullable": true
-            },
-            "phoneNumber": {
-              "type": "string",
-              "nullable": true
-            },
-            "otp": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "id": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          "additionalProperties": false
-        },
-        "StringApiResult": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "string",
-              "nullable": true
-            },
-            "isSuccess": {
-              "type": "boolean"
-            },
-            "statusCode": {
-              "$ref": "#/components/schemas/ApiResultStatusCode"
-            },
-            "message": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "SyncOrderDto": {
-          "type": "object",
-          "properties": {
-            "totalPrice": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "description": {
-              "type": "string",
-              "nullable": true
-            },
-            "list_Chosed_Product": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/List_Chosed_Product_Dto"
-              },
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "UserDto": {
-          "required": [
-            "birthCertificateNumber",
-            "birthCity",
-            "birthDay",
-            "certificateCity",
-            "fname",
-            "gender",
-            "lname",
-            "nationalCode",
-            "phone",
-            "phoneNumber",
-            "postalCode",
-            "userName"
-          ],
-          "type": "object",
-          "properties": {
-            "student": {
-              "type": "boolean"
-            },
-            "name": {
-              "type": "string",
-              "nullable": true
-            },
-            "managerName": {
-              "type": "string",
-              "nullable": true
-            },
-            "userName": {
-              "maxLength": 100,
-              "minLength": 0,
-              "type": "string"
-            },
-            "email": {
-              "type": "string",
-              "nullable": true
-            },
-            "password": {
-              "type": "string",
-              "nullable": true
-            },
-            "passwordConfirm": {
-              "type": "string",
-              "nullable": true
-            },
-            "fname": {
-              "type": "string"
-            },
-            "lname": {
-              "type": "string"
-            },
-            "gender": {
-              "$ref": "#/components/schemas/GenderType"
-            },
-            "nationalCode": {
-              "type": "string"
-            },
-            "phoneNumber": {
-              "type": "string"
-            },
-            "code": {
-              "type": "string",
-              "nullable": true
-            },
-            "birthCertificateNumber": {
-              "type": "string"
-            },
-            "birthDay": {
-              "type": "string"
-            },
-            "birthCity": {
-              "type": "string"
-            },
-            "certificateCity": {
-              "type": "string"
-            },
-            "phone": {
-              "type": "string"
-            },
-            "postalCode": {
-              "type": "string"
-            },
-            "id": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          "additionalProperties": false
-        }
+        "additionalProperties": false
       },
-      "securitySchemes": {
-        "OAuth2": {
-          "type": "oauth2",
-          "flows": {
-            "password": {
-              "tokenUrl": "/api/v1/authentication/FreeToken",
-              "scopes": { }
-            }
+      "ShopCardDetailDto": {
+        "type": "object",
+        "properties": {
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "disCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productsId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "productsPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productsDiscount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productsName": {
+            "type": "string",
+            "nullable": true
+          },
+          "productsImageLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "creationDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShopCardDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "addressId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "orderReportId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "orderReportTax": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderReportPostCost": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userFName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userLName": {
+            "type": "string",
+            "nullable": true
+          },
+          "totalPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "postPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "finalTotalPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "payOnline": {
+            "type": "boolean"
+          },
+          "shopCardDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShopCardDetailDto"
+            },
+            "nullable": true
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressDto"
+            },
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShopCardDtoApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ShopCardDto"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignUpDto": {
+        "type": "object",
+        "properties": {
+          "fName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "otp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StringApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SyncOrderDto": {
+        "type": "object",
+        "properties": {
+          "totalPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "list_Chosed_Product": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/List_Chosed_Product_Dto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDto": {
+        "required": [
+          "birthCertificateNumber",
+          "birthCity",
+          "birthDay",
+          "certificateCity",
+          "fname",
+          "gender",
+          "lname",
+          "nationalCode",
+          "phone",
+          "phoneNumber",
+          "postalCode",
+          "userName"
+        ],
+        "type": "object",
+        "properties": {
+          "student": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "managerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "passwordConfirm": {
+            "type": "string",
+            "nullable": true
+          },
+          "fname": {
+            "type": "string"
+          },
+          "lname": {
+            "type": "string"
+          },
+          "gender": {
+            "$ref": "#/components/schemas/GenderType"
+          },
+          "nationalCode": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "birthCertificateNumber": {
+            "type": "string"
+          },
+          "birthDay": {
+            "type": "string"
+          },
+          "birthCity": {
+            "type": "string"
+          },
+          "certificateCity": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDtoApiResult": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/UserDto"
+          },
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/ApiResultStatusCode"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "password": {
+            "tokenUrl": "/api/v1/authentication/FreeToken",
+            "scopes": { }
           }
         }
       }
     }
   }
+}
