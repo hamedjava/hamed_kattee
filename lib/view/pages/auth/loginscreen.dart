@@ -1,6 +1,9 @@
+import 'package:delivery/controller/authentication/auth_controller.dart';
+import 'package:delivery/model/api/generated/katte.swagger.dart';
 import 'package:delivery/model/globals/globals.dart';
 import 'package:delivery/view/components/forms/my_divider.dart';
 import 'package:delivery/view/pages/auth/registerotpscreen.dart';
+import 'package:delivery/view/pages/home/indexscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -105,15 +108,15 @@ class LoginScreen extends StatelessWidget {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(50),
                         onTap: () {
-                          auth_controller
-                              .login(
+                          login(
                                   context: context,
                                   userName: userNameController.text)
                               .then((value) {
                             if (value.isSuccess!) {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => RegisterOtpScreen(),
+                                  builder: (context) => RegisterOtpScreen(
+                                      phoneNumber: userNameController.text),
                                 ),
                               );
                             } else {

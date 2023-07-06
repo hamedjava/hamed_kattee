@@ -1,5 +1,7 @@
 import 'package:delivery/model/api/generated/katte.swagger.dart';
+import 'package:delivery/routs/routs.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<ApiResult> login(
     {String? userName, required BuildContext context}) async {
@@ -12,6 +14,7 @@ Future<ApiResult> login(
   print(postResult.error);
 
   if (postResult.isSuccessful == true) {
+    print(postResult.error);
   } else {
     // QuickAlert.show(
     //   context: context,
@@ -25,20 +28,62 @@ Future<ApiResult> login(
   return response;
 }
 
-Future<ApiResult> loginOtp({
-  String? tel,
+Future<AccessToken> loginOtp({
+  LoginOtpDto? body,
   required BuildContext context,
 }) async {
+  print('im in otp controller');
   final api = Katte.create();
 
   final postResult = await api.apiV1AuthenticationLoginOtpPost(
-    body: LoginOtpDto(),
+    body: body,
   );
   print(postResult.body);
   print(postResult.error);
   //postResult.body.token
 
   if (postResult.isSuccessful == true) {
+    print("hey im after route");
+    final response = AccessToken.fromJson(postResult.body!.toJson());
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.setString("token", response.accessToken.toString());
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil(indexScreen, (route) => false);
+  } else {
+    // QuickAlert.show(
+    //   context: context,
+    //   type: QuickAlertType.error,
+    //   title: 'Oops...',
+    //   text: postResult.error.toString(),
+    // );
+  }
+  final response = AccessToken.fromJson(postResult.body!.toJson());
+
+  return response;
+}
+
+Future<ApiResult> signup({
+  SignUpDto? body,
+  required BuildContext context,
+}) async {
+  print('signup');
+
+  final api = Katte.create();
+
+  final postResult = await api.apiV1AuthenticationSignUpPost(
+    body: body,
+  );
+  // print(postResult.body);
+  // print(postResult.error);
+  //postResult.body.token
+
+  if (postResult.isSuccessful == true) {
+    print("hey im signup");
+    final response = ApiResult.fromJson(postResult.body!.toJson());
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.setString("token", response.isSuccess.toString());
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil(loginScreen, (route) => false);
   } else {
     // QuickAlert.show(
     //   context: context,
@@ -51,6 +96,8 @@ Future<ApiResult> loginOtp({
 
   return response;
 }
+
+
 
 // Future<AuthenticationDtoApiResult> login(
 //     {AuthenticationDto? body, required BuildContext context}) async {
@@ -95,17 +142,17 @@ Future<ApiResult> loginOtp({
 //   return response;
 // }
 
-// Future<AccessToken> otp(
-//     {OtpDto? body,
+// Future<ApiResult> otp(
+//     {AccessToken? body,
 //     required BuildContext context,
 //     required bool subscribe}) async {
 //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-//   final api = Client.create();
+//   final api = Katte.create();
 
 //   print(body);
 
-//   final postResult = await api.apiV2AuthenticationLoginSignUpValidationPost(
-//     body: body,
+//   final postResult = await api.apiV1AuthenticationLoginOtpPost(
+//     body: LoginOtpDto(),
 //   );
 //   print(postResult.body);
 //   print(postResult.error);
@@ -116,21 +163,21 @@ Future<ApiResult> loginOtp({
 //     await sharedPreferences.setString(
 //         "access-token", response.accessToken.toString());
 
-//     // await dashboard_info_controller.dashboardInfo(context: context);
+//     //await dashboard_info_controller.dashboardInfo(context: context);
 
-//     // if (subscribe) {
-//     //   Navigator.of(context).pushNamedAndRemoveUntil("screen", (route) => false);
-//     // } else {
-//     //   Navigator.of(context)
-//     //       .push(MaterialPageRoute(builder: (context) => const Subscription()));
-//     // }
+//     if (subscribe) {
+//       Navigator.of(context).pushNamedAndRemoveUntil("screen", (route) => false);
+//     } else {
+//       Navigator.of(context)
+//           .push(MaterialPageRoute(builder: (context) => const Subscription()));
+//     }
 //   } else {
-//     QuickAlert.show(
-//       context: context,
-//       type: QuickAlertType.error,
-//       title: 'Oops...',
-//       text: postResult.error.toString(),
-//     );
+//     // QuickAlert.show(
+//     //   context: context,
+//     //   type: QuickAlertType.error,
+//     //   title: 'Oops...',
+//     //   text: postResult.error.toString(),
+//     // );
 //   }
 //   final response = AccessToken.fromJson(postResult.body!.toJson());
 

@@ -196,9 +196,10 @@ abstract class Katte extends ChopperService {
 
   ///
   ///@param UserName
-  Future<chopper.Response<ApiResult>> apiV1AuthenticationLoginPost(
+  Future<chopper.Response<StringApiResult>> apiV1AuthenticationLoginPost(
       {String? userName}) {
-    generatedMapping.putIfAbsent(ApiResult, () => ApiResult.fromJsonFactory);
+    generatedMapping.putIfAbsent(
+        StringApiResult, () => StringApiResult.fromJsonFactory);
 
     return _apiV1AuthenticationLoginPost(userName: userName);
   }
@@ -209,13 +210,14 @@ abstract class Katte extends ChopperService {
     path: 'http://103.75.197.248:90/api/v1/Authentication/Login',
     optionalBody: true,
   )
-  Future<chopper.Response<ApiResult>> _apiV1AuthenticationLoginPost(
+  Future<chopper.Response<StringApiResult>> _apiV1AuthenticationLoginPost(
       {@Query('UserName') String? userName});
 
   ///
-  Future<chopper.Response<ApiResult>> apiV1AuthenticationLoginOtpPost(
+  Future<chopper.Response<AccessToken>> apiV1AuthenticationLoginOtpPost(
       {required LoginOtpDto? body}) {
-    generatedMapping.putIfAbsent(ApiResult, () => ApiResult.fromJsonFactory);
+    generatedMapping.putIfAbsent(
+        AccessToken, () => AccessToken.fromJsonFactory);
 
     return _apiV1AuthenticationLoginOtpPost(body: body);
   }
@@ -225,7 +227,7 @@ abstract class Katte extends ChopperService {
     path: 'http://103.75.197.248:90/api/v1/Authentication/LoginOtp',
     optionalBody: true,
   )
-  Future<chopper.Response<ApiResult>> _apiV1AuthenticationLoginOtpPost(
+  Future<chopper.Response<AccessToken>> _apiV1AuthenticationLoginOtpPost(
       {@Body() required LoginOtpDto? body});
 
   ///
@@ -443,7 +445,9 @@ abstract class Katte extends ChopperService {
   ///@param UserId
   ///@param Authority
   ///@param status
-  @Get(path: 'http://103.75.197.248:90/api/v1/Payment/ProductPaymentConfirmation')
+  @Get(
+      path:
+          'http://103.75.197.248:90/api/v1/Payment/ProductPaymentConfirmation')
   Future<chopper.Response<ApiResult>>
       _apiV1PaymentProductPaymentConfirmationGet({
     @Query('ShopCardId') String? shopCardId,

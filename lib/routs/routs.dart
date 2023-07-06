@@ -19,7 +19,7 @@ const String ordersScreen = "ordersScreen";
 
 Map<String, Widget Function(BuildContext)> routes = <String, WidgetBuilder>{
   registerScreen: (context) => RegisterScreen(),
-  registerOtpScreen: (context) => RegisterOtpScreen(),
+  // registerOtpScreen: (context) => RegisterOtpScreen(),
   loginScreen: (context) => LoginScreen(),
   paymentScreen: (context) => const PaymentFirstScreen(),
   addressScreen: (context) => const MyAddressScreen(),

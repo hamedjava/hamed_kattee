@@ -164,7 +164,7 @@ class _$Katte extends Katte {
   }
 
   @override
-  Future<Response<ApiResult>> _apiV1AuthenticationLoginPost(
+  Future<Response<StringApiResult>> _apiV1AuthenticationLoginPost(
       {String? userName}) {
     final Uri $url =
         Uri.parse('http://103.75.197.248:90/api/v1/Authentication/Login');
@@ -177,11 +177,11 @@ class _$Katte extends Katte {
       client.baseUrl,
       parameters: $params,
     );
-    return client.send<ApiResult, ApiResult>($request);
+    return client.send<StringApiResult, StringApiResult>($request);
   }
 
   @override
-  Future<Response<ApiResult>> _apiV1AuthenticationLoginOtpPost(
+  Future<Response<AccessToken>> _apiV1AuthenticationLoginOtpPost(
       {required LoginOtpDto? body}) {
     final Uri $url =
         Uri.parse('http://103.75.197.248:90/api/v1/Authentication/LoginOtp');
@@ -192,7 +192,7 @@ class _$Katte extends Katte {
       client.baseUrl,
       body: $body,
     );
-    return client.send<ApiResult, ApiResult>($request);
+    return client.send<AccessToken, AccessToken>($request);
   }
 
   @override
